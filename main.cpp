@@ -2,20 +2,29 @@
 #include <Metal/Metal.hpp>
 #include <QuartzCore/QuartzCore.hpp>
 
-// #include <torch/extension.h>
+#include <torch/torch.h>
 #include <iostream>
 #include <vector>
+
 using std::vector;
+using std::cout;
+using std::endl;
+void testTorch() {
+    if (!torch::mps::is_available()) {
+        cout << "MPS is not available." << endl;
+        return;
+    }
+
+    torch::TensorOptions option = torch::TensorOptions().device(torch::kMPS);
+    torch::Tensor tensor = torch::zeros({2, 3}, option);
+    cout << tensor << endl;
+}
+
 
 int main() {
-
-    // using nns = NS::String;
-    // vector<nns *> vs = {str1, str2, str3};
-    const void* strings[] = {CFSTR("Hello"), CFSTR("Hello2"), CFSTR("Hello3")};
-    // NS::Array* pArray = (NS::Array*) CFArrayCreate(kCFAllocatorDefault, (const void **));
-    CFArrayRef array = CFArrayCreate(kCFAllocatorDefault, strings, 3, &kCFTypeArrayCallBacks);
-    CFShow(array);
-    CFRelease(array);
+    MTL::Device *device = MTL::CreateSystemDefaultDevice();
+    NS::Error *error = nullptr;
+    testTorch();
     return 0;
 }
 

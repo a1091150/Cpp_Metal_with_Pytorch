@@ -20,6 +20,8 @@ CMakeUserPresets.json
 # External projects
 *-prefix/
 
+build/*
+
 ### macOS ###
 # General
 .DS_Store

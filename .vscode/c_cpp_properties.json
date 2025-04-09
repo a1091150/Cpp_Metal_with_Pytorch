@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/Users/yangdunfu/Documents/libtorch/include",
+                "/Users/yangdunfu/Documents/libtorch/include/torch/csrc/api/include",
+                "/opt/homebrew/anaconda3/envs/align3r/include/python3.11",
+                "${workspaceFolder}/metal-cpp"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}
